@@ -7,7 +7,7 @@ class LCD:
         self._data = ""
 
     def _print_data(self):
-        for i in range(0, 80):
+        for i in range(0, 5):
             print()
         print("LCD (backlight " + ("on" if self._backlit else "off") + "):")
         print(self._data[:16])

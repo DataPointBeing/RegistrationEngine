@@ -1,11 +1,3 @@
-import io
-
-import usb.core
-import time
-import sys
-import math
-
-
 class Printer:
 
     def __init__(self):
@@ -27,7 +19,7 @@ class Printer:
         pass
 
     def print_barcode(self, text, type):
-        pass
+        print("PRINTED A BARCODE: " + text)
 
     def normal(self):
         pass
@@ -97,12 +89,11 @@ class Printer:
     def underline_on(self, weight=1):
         if weight > 2: weight = 2
 
-
     def underline_off(self):
         pass
 
     def print_image(self, image_file):
-        pass
+        print("PRINTED AN IMAGE: " + image_file)
 
     def set_line_height(self, val=32):
         if val < 24: val = 24
@@ -113,10 +104,11 @@ class Printer:
     # with existing code written for the Arduino library.
     def print(self, *args):
         for arg in args:
-            pass
+            print(arg, end='')
+        print()
 
     # For Arduino code compatibility again
     def println(self, *args):
         for arg in args:
-            pass
-        pass
+            print(arg, end='')
+        print()
