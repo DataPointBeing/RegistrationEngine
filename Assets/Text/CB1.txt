@@ -1,0 +1,21 @@
+<medium>CODEBREAK<medium>
+Player 1
+sets the
+code.
+(4 DIGITS)
+
+Other
+players
+try to
+guess.
+
+P:
+RIGHT
+letter
+RIGHT
+place
+N:
+RIGHT
+letter
+WRONG
+place

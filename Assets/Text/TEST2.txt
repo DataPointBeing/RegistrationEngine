@@ -1,0 +1,7 @@
+<center>What are
+you planning
+to do now?<center>
+Dunno
+<barcode>A
+Next goal?
+<barcode>W

@@ -1,0 +1,8 @@
+<center>Hi there,
+how are
+you doing?<center>
+Hello there
+<barcode>A
+Who are you?
+<barcode>W
+

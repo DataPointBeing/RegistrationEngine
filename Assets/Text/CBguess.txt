@@ -1,0 +1,4 @@
+Guess:
+{GUESS}
+<right>Hint:
+{HINT}<right>

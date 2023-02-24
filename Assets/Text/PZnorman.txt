@@ -1,0 +1,45 @@
+Huh, this
+book is
+just a
+well
+disguised
+safe! It
+takes two
+3-digit
+combos,
+A and B.
+
+There's a
+note...
+
+"A hint
+for A
+is in
+plain sight,
+though not
+black or
+white, to
+one side of
+this long
+paper trail."
+
+"A hint
+for B
+is a key
+with a
+picture
+of me; a
+red and
+white
+identity.
+(Only mine
+will work,
+please
+don't
+scan
+yours.)"
+
+Solve A
+<barcode>A
+Solve B
+<barcode>B

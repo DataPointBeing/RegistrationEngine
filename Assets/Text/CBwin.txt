@@ -1,0 +1,11 @@
+<medium>CODE
+BROKEN:<medium>
+{COMBINATION}
+
+in
+{TRIES}
+attempts
+
+<b>Nice work!<b>
+<center>Thanks for
+playing!<center>

@@ -1,0 +1,10 @@
+<b>Here
+is a
+funny
+receipt
+to test
+that the
+printer
+has not
+eaten
+itself.<b>

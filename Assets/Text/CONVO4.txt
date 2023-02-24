@@ -1,0 +1,15 @@
+<center>Say, what's
+your
+favorite
+flavor of
+ice cream?<center>
+Mint chip
+<barcode>Y
+Cookie dough
+<barcode>K
+Strawberry
+<barcode>D
+I don't
+like
+ice cream
+<barcode>Z
