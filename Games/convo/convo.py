@@ -2,10 +2,10 @@ import time
 
 from registration import Registration
 
-reg = Registration()
+reg = Registration(0, 0)
 
 
-def ice_cream_response(flavor):
+def ice_cream_response(flavor, __):
     reg.remove_valid_barcode("Y")
     reg.remove_valid_barcode("K")
     reg.remove_valid_barcode("D")
@@ -42,7 +42,7 @@ def ice_cream_response(flavor):
     reg.query_scanner("Scan a response:")
 
 
-def introduction(intro):
+def introduction(intro, __):
     reg.remove_valid_barcode("A")
     reg.remove_valid_barcode("W")
     if intro == "W":
@@ -59,7 +59,7 @@ def introduction(intro):
         reg.query_scanner("Scan a response:")
 
 
-def couldnt_you_tell(_):
+def couldnt_you_tell(_, __):
     reg.remove_valid_barcode("Q")
     reg.remove_valid_barcode("J")
     reg.print_receipt("CONVO3")
@@ -71,7 +71,7 @@ def couldnt_you_tell(_):
     reg.query_scanner("Scan a response:")
 
 
-def bye(response):
+def bye(response, __):
     reg.remove_valid_barcode("B")
     reg.remove_valid_barcode("H")
     if response == "B":
@@ -82,7 +82,7 @@ def bye(response):
     reg.query_scanner("Scan a response:")
 
 
-def lingering(_):
+def lingering(_, __):
     reg.remove_valid_barcode("T")
     reg.print_receipt("CONVO9")
 

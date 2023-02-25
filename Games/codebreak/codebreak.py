@@ -1,6 +1,8 @@
+import time
+
 from registration import Registration
 
-reg = Registration()
+reg = Registration(0, 0)
 
 
 reg.print_receipt("CB1")
@@ -43,3 +45,5 @@ while guess != code:
             ("{GUESS}", guess),
             ("{HINT}", get_hint(guess))
         ])
+
+    time.sleep(3)

@@ -16,12 +16,16 @@ class LCD:
     def write(self, content):
         self._data += content
         while len(self._data) > 32:
-            self._data = self._data[16:]
+            self._trim()
         self._print_data()
 
     def next_line(self):
         while len(self._data) % 16 > 0:
             self._data += " "
+        self._trim()
+
+    def _trim(self):
+        self._data = self._data[16:]
 
     def backlight(self, value=True):
         self._backlit = value
@@ -35,9 +39,6 @@ class LCD:
     def clear(self):
         self._data = ""
         self._print_data()
-
-    def splash(self, content):
-        pass
 
     def backspace(self):
         if len(self._data) >= 1:

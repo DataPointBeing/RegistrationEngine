@@ -187,6 +187,7 @@ class Registration:
             self._querying = True
             self._lcd_lock.acquire()
             self._lcd.write(prompt)
+            self._lcd.next_line()
 
         x = input()
         res = self.valid_barcode(x)
@@ -194,6 +195,7 @@ class Registration:
         while res is None:
             if prompt is not None:
                 self._lcd.write(prompt)
+                self._lcd.next_line()
             x = input()
             res = self.valid_barcode(x)
 
@@ -247,6 +249,7 @@ class Registration:
 
         while re.search('[^0-9]', x) or (match_length and not len(x) == response_max_length):
             self._lcd.write(prompt)
+            self._lcd.next_line()
             x = self._keypad_read_live(response_max_length)
 
         self._lcd_lock.release()
