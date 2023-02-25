@@ -4,7 +4,7 @@ import time
 from registration import Registration
 
 def main():
-    reg = Registration()
+    reg = Registration(0, 0)
     unlocked_yet = 0
 
     def unlock_message():
@@ -14,7 +14,7 @@ def main():
             return
         reg.print_receipt("PZone")
 
-    def q_comboA(_):
+    def q_comboA(_, __):
         x = reg.query_keypad("Combo A Guess:", 3, True)
         if x == "405":
             reg.remove_valid_barcode("A")
@@ -27,7 +27,7 @@ def main():
         print('WRONG COMBO')
         time.sleep(3)
 
-    def q_comboB(_):
+    def q_comboB(_, __):
         x = reg.query_keypad("Combo B Guess:", 3, True)
         if x == "222":
             reg.remove_valid_barcode("B")
@@ -40,13 +40,13 @@ def main():
         print('WRONG COMBO')
         time.sleep(3)
 
-    def printer(_):
+    def printer(_, __):
         reg.print_receipt("PZbox")
 
-    def school_id(_):
+    def school_id(_, __):
         reg.print_receipt("PZid")
 
-    def norman(_):
+    def norman(_, __):
         reg.print_receipt("PZnorman")
         reg.add_valid_barcode("A", q_comboA)
         reg.add_valid_barcode("B", q_comboB)
@@ -60,6 +60,7 @@ def main():
         reg.query_scanner("SCAN SOMETHING")
 
     reg.pop_drawer()
+    time.sleep(3)
 
 
 main()
