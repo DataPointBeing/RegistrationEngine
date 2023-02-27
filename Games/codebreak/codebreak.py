@@ -2,7 +2,7 @@ import time
 
 from registration import Registration
 
-reg = Registration(0, 0)
+reg = Registration.engine()
 
 
 reg.print_receipt("CB1")

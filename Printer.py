@@ -1,3 +1,6 @@
+from PIL import Image
+
+
 class Printer:
 
     def __init__(self):
@@ -93,7 +96,9 @@ class Printer:
         pass
 
     def print_image(self, image_file):
-        print("PRINTED AN IMAGE: " + image_file)
+        self.print("PRINTED AN IMAGE")
+        im = Image.open(image_file)
+        im.show()
 
     def set_line_height(self, val=32):
         if val < 24: val = 24

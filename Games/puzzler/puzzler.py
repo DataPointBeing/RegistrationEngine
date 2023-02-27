@@ -4,8 +4,9 @@ import time
 from registration import Registration
 
 def main():
-    reg = Registration(0, 0)
     unlocked_yet = 0
+
+    reg = Registration.engine()
 
     def unlock_message():
         nonlocal unlocked_yet

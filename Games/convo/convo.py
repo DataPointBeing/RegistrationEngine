@@ -2,7 +2,7 @@ import time
 
 from registration import Registration
 
-reg = Registration(0, 0)
+reg = Registration.engine()
 
 
 def ice_cream_response(flavor, __):

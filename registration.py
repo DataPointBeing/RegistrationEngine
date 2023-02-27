@@ -9,6 +9,9 @@ from Drawer import Drawer
 from LCD import LCD
 from ReceiptProcessor import ReceiptProcessor
 
+LCD_PORT = 0
+PRINTER_PORT = 0
+
 
 class Registration:
     """
@@ -30,6 +33,14 @@ class Registration:
     on the system for making and testing games in a platform-agnostic workflow. Read
     the information in those files to understand their behavior.
     """
+
+    _reg = None
+
+    @staticmethod
+    def engine():
+        if Registration._reg is None:
+            Registration._reg = Registration(LCD_PORT, PRINTER_PORT)
+        return Registration._reg
 
     def __init__(self, lcd_port, printer_port):
         """
@@ -170,7 +181,14 @@ class Registration:
         """
         self._lcd.write(content)
 
-    def query_scanner(self, prompt=None):
+    def clear_screen(self):
+        """
+        Delete all text content on the character LCD.
+        *** Remember that idle animations will overwrite this, so halt them if needed!
+        """
+        self._lcd.clear()
+
+    def query_scanner(self, prompt=None, filter_digits=False):
         """
         Awaits a (recognized) scanned barcode. When one is received, its corresponding
         function is run immediately.
@@ -179,6 +197,7 @@ class Registration:
         It is STRONGLY recommended not to await multiple queries on different threads at the same time.
 
         :param prompt: (optional) a text prompt to display on the LCD while waiting.
+        :param filter_digits: whether to remove all digits 0-9 from a barcode when processing it.
         :return: the return value of the barcode's function.
         """
         do_prompt = prompt is not None
@@ -190,14 +209,14 @@ class Registration:
             self._lcd.next_line()
 
         x = input()
-        res = self.valid_barcode(x)
+        res = self.valid_barcode(x, filter_digits)
 
         while res is None:
             if prompt is not None:
                 self._lcd.write(prompt)
                 self._lcd.next_line()
             x = input()
-            res = self.valid_barcode(x)
+            res = self.valid_barcode(x, filter_digits)
 
         if do_prompt:
             self._lcd_lock.release()
@@ -334,11 +353,24 @@ class Registration:
 
         self._printer.feed()
 
+    def print_image(self, image):
+        """
+        Prints an image by name from Assets/Images, or direct from a file-like object.
+
+        :param image: the file-like object to print, or a PNG name (sans .png).
+        """
+        im = image
+        if isinstance(im, str):
+            im = "Assets/Images/" + im + ".png"
+        self._printer.print_image(im)
+
+
 
 class IdleAnimation:
     """
     Class for asynchronous LCD idle animations.
     """
+
     def __init__(self, fps, frames, lcd, cond):
         self._framerate = fps
         self._animation = frames
@@ -368,6 +400,7 @@ class ProceduralIdleAnimation:
     """
     Class for *procedural* asynchronous LCD idle animations.
     """
+
     def __init__(self, fps, generator, lcd, cond):
         self._framerate = fps
         self._generator = generator

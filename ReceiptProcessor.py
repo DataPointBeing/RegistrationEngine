@@ -29,7 +29,7 @@ class ReceiptProcessor:
         self._p.print_barcode(code, protocol)
 
     def image(self, path, _=0):
-        self._p.print_image("Assets/Images/" + path, True)
+        self._p.print_image("Assets/Images/" + path + ".png", True)
 
     def spaced_on(self):
         self._p.set_line_height(50)
