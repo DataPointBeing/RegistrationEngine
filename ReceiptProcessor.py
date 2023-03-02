@@ -1,6 +1,8 @@
 from Printer import Printer
 
 
+# *** NOTE: 32 chars per line
+
 class ReceiptProcessor:
     def __init__(self, printer):
         self._p = printer

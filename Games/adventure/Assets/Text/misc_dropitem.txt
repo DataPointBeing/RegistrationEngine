@@ -1,0 +1,1 @@
+The {ITEM} card was removed from your inventory. Just blend it up or something.

@@ -38,17 +38,18 @@ class Room:
 
         self._entered_before = False
 
-    def enter(self):
-        if not self._entered_before and self._first_text_generator is not None:
-            self._first_text_generator()
-        elif self._next_text_generator is not None:
-            self._next_text_generator()
+    def enter(self, do_text=True):
+        if do_text:
+            if not self._entered_before and self._first_text_generator is not None:
+                self._first_text_generator()
+            elif self._next_text_generator is not None:
+                self._next_text_generator()
 
         self.draw_room()
         self._entered_before = True
 
-    def exit(self):
-        if self._exit_text_generator is not None:
+    def exit(self, do_text=True):
+        if do_text and self._exit_text_generator is not None:
             self._exit_text_generator()
 
     def entered_before(self):
@@ -70,6 +71,13 @@ class Room:
                 return inter
         return None
 
+    def interactables_with_id(self, inter_id):
+        result = []
+        for inter in self._interactables:
+            if inter.get_id() == inter_id:
+                result.append(inter)
+        return result
+
     def add_interactable(self, inter):
         self._interactables.append(inter)
 
@@ -78,10 +86,9 @@ class Room:
             self._interactables.append(inter)
 
     def remove_interactables_with_id(self, inter_id):
-        inter = self.interactable_with_id(inter_id)
-        while inter is not None:
-            self._interactables.remove(inter)
-            inter = self.interactable_with_id(inter_id)
+        for inter in self._interactables:
+            if inter.get_id() == inter_id:
+                self._interactables.remove(inter)
 
     def replacement_with_id(self, repl_id):
         for repl in self._replacements:
@@ -110,23 +117,54 @@ class Room:
         return False
 
 
+class Inventory:
+    def __init__(self, interactables):
+        self._interactables = interactables
+
+    def interactable_with_id(self, inter_id):
+        for inter in self._interactables:
+            if inter.get_id() == inter_id:
+                return inter
+        return None
+
+    def interactables_with_id(self, inter_id):
+        result = []
+        for inter in self._interactables:
+            if inter.get_id() == inter_id:
+                result.append(inter)
+        return result
+
+    def add_interactable(self, inter):
+        self._interactables.append(inter)
+
+    def add_interactables(self, inters):
+        for inter in inters:
+            self._interactables.append(inter)
+
+    def remove_interactables_with_id(self, inter_id):
+        for inter in self._interactables:
+            if inter.get_id() == inter_id:
+                self._interactables.remove(inter)
+
+    def poll_interactions(self, action_set):
+        for inter in self._interactables:
+            if inter.poll(action_set):
+                return True
+        return False
+
+
 class Interactable:
     def __init__(self,
                  inter_id,
-                 display_name,
                  action_set,
                  on_interact):
         self._inter_id = inter_id
-        self._display_name = display_name
         self._action_set = action_set
         self._action_set.append(inter_id)
         self._on_interact = on_interact
 
     def get_id(self):
         return self._inter_id
-
-    def get_display_name(self):
-        return self._display_name
 
     def poll(self, action_set):
         a_s = action_set.copy()
@@ -142,8 +180,7 @@ class Interactable:
                 if action != self._inter_id and action not in self._action_set:
                     return False
 
-        self._on_interact()
-        return True
+        return self._on_interact()
 
 
 class RoomReplacement:
@@ -171,7 +208,7 @@ class RoomReplacement:
             img.seek(0)
             img_loaded = Image.open(img)
             repl_loaded = Image.open(self._image)
-            img_loaded.paste(repl_loaded, self._location)
+            img_loaded.paste(repl_loaded, self._location, repl_loaded)
             img = io.BytesIO()
             img_loaded.save(img, "PNG")
             if self._on_replacement is not None:

@@ -98,7 +98,7 @@ class Printer:
     def print_image(self, image_file):
         self.print("PRINTED AN IMAGE")
         im = Image.open(image_file)
-        im.show()
+        # im.show()
 
     def set_line_height(self, val=32):
         if val < 24: val = 24

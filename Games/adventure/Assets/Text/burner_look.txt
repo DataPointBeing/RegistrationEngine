@@ -1,0 +1,3 @@
+These dials control the burners.
+
+The burner is currently {BURNER_STATUS}.

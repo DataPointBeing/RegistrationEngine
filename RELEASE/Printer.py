@@ -9,7 +9,7 @@ import math
 class Printer:
 
     def __init__(self):
-        pass
+        self.lineSpacing = 32
 
     # Reset text formatting parameters.
     def set_default(self):
@@ -95,7 +95,6 @@ class Printer:
     # 2 - thick underline
     def underline_on(self, weight=1):
         if weight > 2: weight = 2
-
 
     def underline_off(self):
         pass
