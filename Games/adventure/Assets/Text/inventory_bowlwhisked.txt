@@ -1,3 +1,9 @@
+--------------------------------
+cut this card out!
 
 BOWL (EGG MIXTURE)
+<image>item_bowl
+A bowl of omelet mix!
+
 <barcode>aM
+--------------------------------

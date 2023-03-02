@@ -1,3 +1,9 @@
+--------------------------------
+cut this card out!
 
 BOWL (EMPTY)
+<image>item_bowl
+A "mixing bowl", of sorts.
+
 <barcode>aM
+--------------------------------

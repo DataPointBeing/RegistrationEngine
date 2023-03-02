@@ -1,3 +1,9 @@
+--------------------------------
+cut this card out!
 
 CHEESE
+<image>item_cheese
+A block of absurdly old cheese.
+
 <barcode>aK
+--------------------------------

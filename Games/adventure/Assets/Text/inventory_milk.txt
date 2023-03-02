@@ -1,3 +1,9 @@
+--------------------------------
+cut this card out!
 
 MILK
+<image>item_milk
+A gallon of milk!
+
 <barcode>aJ
+--------------------------------

@@ -1,3 +1,9 @@
+--------------------------------
+cut this card out!
 
 OMELET
+<image>item_milk
+Your eggy McGuffin.
+
 <barcode>aY
+--------------------------------

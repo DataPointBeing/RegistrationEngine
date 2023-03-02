@@ -1,0 +1,21 @@
+<image>LOGO
+
+You wake up to the sound of birds singing, your alarm clock chirping, and your stomach growling.
+
+You are absolutely starving! You barely have the energy to do anything. That's no way to start the day!
+
+You know what you have to do. It's time to make an omelet!
+
+You lift up your pillow. As always, you've left yourself a plate for just such an endeavor:
+
+--------------------------------
+cut this card out!
+
+PLATE
+<image>item_plate
+A clean ceramic dinner plate.
+
+<barcode>aY
+--------------------------------
+
+Now let's get to work!

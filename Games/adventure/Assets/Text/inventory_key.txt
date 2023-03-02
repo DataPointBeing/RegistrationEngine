@@ -1,3 +1,9 @@
+--------------------------------
+cut this card out!
 
 KEY
+<image>item_key
+Your bedroom key.
+
 <barcode>aL
+--------------------------------

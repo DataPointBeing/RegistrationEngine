@@ -1,3 +1,9 @@
+--------------------------------
+cut this card out!
 
 EGGS
+<image>item_eggs
+A carton of eggs with two left.
+
 <barcode>aI
+--------------------------------

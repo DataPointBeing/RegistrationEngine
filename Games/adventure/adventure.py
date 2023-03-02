@@ -243,8 +243,8 @@ bedroom = Room(
             lambda: hasKey
         )
     ],
-    print_command("TEST"),
-    print_command("TEST2")
+    print_command("ENTER_bedroom1"),
+    print_command("ENTER_bedroom2")
 )
 
 kitchen = Room(
@@ -282,8 +282,8 @@ kitchen = Room(
             lambda: bowlState == 2 and not hasBowl and not panState >= 1 and not plateHasOmelet
         )
     ],
-    print_command("TEST3"),
-    print_command("TEST4")
+    print_command("ENTER_kitchen1"),
+    print_command("ENTER_kitchen2")
 )
 
 stove = Room(
@@ -321,7 +321,7 @@ stove = Room(
             lambda: panState == 3
         )
     ],
-    print_command("TEST")
+    print_command("ENTER_stove1")
 )
 
 counter = Room(
@@ -353,7 +353,7 @@ counter = Room(
             lambda: bowlState == 2
         )
     ],
-    print_command("TEST")
+    print_command("ENTER_counter1")
 )
 
 fridge = Room(
@@ -373,7 +373,7 @@ fridge = Room(
             lambda: milkTaken
         )
     ],
-    print_command("TEST")
+    print_command("ENTER_fridge1")
 )
 
 inventory = Inventory(
@@ -1458,7 +1458,7 @@ while not done and not won:
             reg.write_to_screen(make_action_text())
 
 if won:
-    # Victory celebration here!
+    reg.print_receipt("WIN")
     pass
 
 time.sleep(3)
